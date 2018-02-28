@@ -1,7 +1,23 @@
 #include <stdio.h>
 
+int solve(int* nums, int index){
+    if (index<0){
+        return 0;
+    }
+    int a;
+    int b;
+
+    a=nums[index]+solve(nums, index-2);
+    b=solve(nums, index-1);
+
+    if (a>=b) 
+        return a;
+    else
+        return b;
+}
+
 int rob(int* nums, int numsSize){
-    return 0;
+    return solve(nums, numsSize-1);
 }
 
 int main(int argc, char * argv[]){
